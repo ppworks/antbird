@@ -5,9 +5,11 @@
 module Antbird
   module RestApi
     module RestApiV<%= class_version %>
+<% if api_spec['_common.json'] %>
       def common_params
         @common_params ||= <%= api_spec['_common.json'] %>
       end
+<% end %>
 <% api_spec.each do |file_name, file_content| %>
 <%  next if file_name == '_common.json' %>
 <%  file_content.each do |api_name, api_spec| %>
